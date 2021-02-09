@@ -49,9 +49,9 @@ def encrypt(password, key=None):
     return encrypted
 
 class Connection:
-    IsFolder = 0
+    IsFolder = '0'
     Number = None
-    Parent = -1
+    Parent = '-1'
     Username = None
     Database = None
     ConnectAs = None
@@ -88,13 +88,13 @@ def parse(path):
                         current_connection = None
                     current_block = line[1:-1]
                 elif current_block == 'Connections':
-                    parts = line.split('=')
+                    parts = [p.strip() for p in line.split('=', 1)]
                     if parts[0] == 'DisplayName':
                         # new connection
                         if current_connection:
                             connections.append(current_connection)
                         current_connection = Connection(parts[1])
-                    else:
+                    elif len(parts) > 1:
                         try:
                             setattr(current_connection,parts[0],parts[1])
                         except AttributeError:
