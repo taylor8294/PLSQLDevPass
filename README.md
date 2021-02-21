@@ -16,7 +16,9 @@ python src/PLSQLDevPass.py -h
 
 Many thanks to Adam Caudill whose insightful [blog post](https://adamcaudill.com/2016/02/02/plsql-developer-nonexistent-encryption/) is the basis for this library.
 
-PL/SQL Developer stores saved passwords in an INI-like file typically located in `C:\Users\<username>\AppData\Roaming\PLSQL Developer\Preferences\<username>\user.prefs`. The passwords are not stored in plain text, rather they are 'encrypted' with a simple xor and bitshift routine. If you pass the path to your preferences file to the python script, it will decrypt all the database connection strings (usernames and passwords) that it finds in the file and print them to the console. It can also encrypt or decrypt a given string.
+PL/SQL Developer stores saved passwords in an INI-like file typically located in `C:\Users\<username>\AppData\Roaming\PLSQL Developer\Preferences\<username>\user.prefs`. The passwords are not stored in plain text, rather they are 'encrypted' with a simple xor and bitshift routine.
+
+If you pass the path to your preferences file to the python script (or the windows executable from the releases page), it will decrypt all the database connection strings (usernames and passwords) that it finds in the file and print them to the console. It can also encrypt or decrypt a given string.
 
 ```
 PLSQLDevPass>python src/PLSQLDecrypter.py -h
