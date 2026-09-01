@@ -30,7 +30,7 @@ def encrypt(password, key=None):
     if key is None:
         key = random.randint(0, 999) + 2000
     else:
-        key = min(2000, max(int(key), 2999))
+        key = max(2000, min(int(key), 2999))
     if verbose_output:
         print('Key: {0}'.format(key))
     encrypted = str(key)
